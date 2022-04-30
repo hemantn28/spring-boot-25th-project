@@ -29,17 +29,17 @@ public class CricketerDBController {
 
     //Update
 
-    @RequestMapping(value = "update_cricketer_db", method = RequestMethod.PUT)
-    public String update(@RequestParam String name, @RequestParam Integer id){
+    @RequestMapping(value = "update_cricketer_db/{name}/{id}", method = RequestMethod.PUT)
+    public String update(@PathVariable String name, @PathVariable Integer id){
         Cricketer cricketer=repository.getById(id);
-        cricketer.setName("Robin Singh");
+        cricketer.setName("Hansi Cronje");
         repository.save(cricketer);
         return "cricketer updated in DB successfully";
     }
     //Delete
 
-    @RequestMapping(value = "delete_cricketer_db",method = RequestMethod.DELETE)
-    public String delete(@RequestParam Integer id){
+    @RequestMapping(value = "delete_cricketer_db/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable Integer id){
         repository.deleteById(id);
         return "cricketer deleted in Db successfully";
 
